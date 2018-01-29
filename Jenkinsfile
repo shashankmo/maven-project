@@ -1,8 +1,5 @@
 pipeline {
 	agent any 
-	tools {
-    maven 'MavenDefault'
-  }
 	stages {
 			stage('build'){
 				steps {
@@ -28,7 +25,13 @@ pipeline {
 					build job: 'deploy-to-staging'	
 
 				}
-		stage('Deploy to Production'){
+
+
+
+
+
+			}
+			stage('Deploy to Production'){
 				steps{
 					timeout(time:5, unit:'DAYS'){
 						input message:'Approve PRODUCTION Deployment?'
@@ -47,11 +50,6 @@ pipeline {
 
 
 			}
-
-
-
-			}
-	
 
 
 
